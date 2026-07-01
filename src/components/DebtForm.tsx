@@ -78,7 +78,7 @@ export function DebtForm({ utang, onSave, onClose }: { utang?: Utang | null, onS
               <input required name="namaAkun" type="text" value={formData.namaAkun} onChange={handleChange} className="w-full border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="KTA Rumah" />
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nama kredit atau pemberi pinjaman</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nama Kredit atau Pemberi Pinjaman</label>
               <input required name="penerbit" type="text" value={formData.penerbit} onChange={handleChange} className="w-full border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="BCA, Kredivo" />
             </div>
             <div className="col-span-2">
@@ -107,7 +107,7 @@ export function DebtForm({ utang, onSave, onClose }: { utang?: Utang | null, onS
               </div>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Tenor</label>
+              <label className="block text-sm font-semibold text-slate-700 mb-1.5">Jumlah Tenor</label>
               <input required name="totalTenor" type="number" min="1" value={formData.totalTenor || ''} onChange={handleChange} className="w-full border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm" placeholder="Bulan/Tahun" />
             </div>
             <div className="col-span-2 sm:col-span-1">
@@ -208,7 +208,7 @@ export function DebtForm({ utang, onSave, onClose }: { utang?: Utang | null, onS
                 <span className="font-bold text-slate-900">{formatRupiah(totalTermasukBunga)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-slate-600">Cicilan per Bulan:</span>
+                <span className="text-slate-600">Cicilan Per Tenor:</span>
                 <span className="font-bold text-slate-900">{formatRupiah(cicilanEstimasi)}</span>
               </div>
             </div>

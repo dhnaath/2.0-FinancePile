@@ -92,11 +92,11 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
 
   const getLangLabel = (l: Language) => {
     switch(l) {
-      case 'id': return 'IDN';
-      case 'en': return 'ENG';
-      case 'ms': return 'MYS';
+      case 'id': return 'ID';
+      case 'en': return 'EN';
+      case 'ms': return 'MY';
       case 'zh': return '中文';
-      default: return 'IDN';
+      default: return 'ID';
     }
   };
 
@@ -185,17 +185,17 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="w-full bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a]"
+            className="w-[calc(100%-7pt)] mx-auto bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a]"
             
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-start items-center mb-4">
                <div className="flex items-center gap-4 text-gray-100 group-hover:text-gray-100 transition-colors">
                  <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center shrink-0 border border-[#2a2a2a]">
                    <ShieldCheck size={24} className="theme-icon" />
                  </div>
-                 <div className="text-left">
-                   <h2 className="text-lg font-medium">{translations.landing.categories.surety.title}</h2>
-                   <div className="text-xs text-gray-400">{translations.landing.categories.surety.desc[lang]}</div>
+                 <div className="flex flex-col justify-center -mt-0.5 gap-[10pt]">
+                   <h2 className="text-lg font-medium leading-none">{translations.landing.categories.surety.title}</h2>
+                   <div className="text-xs text-gray-400 leading-none">{translations.landing.categories.surety.desc[lang]}</div>
                  </div>
                </div>
             </div>
@@ -266,17 +266,17 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
           <motion.div initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="w-full bg-[#1e1e1e] rounded-2xl p-6 text-left relative border border-transparent"
+            className="w-[calc(100%-7pt)] mx-auto bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a]"
             
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-start items-center mb-4">
                <div className="flex items-center gap-4 text-gray-100 transition-colors">
                  <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center shrink-0 border border-[#2a2a2a]">
                    <RefreshCw size={24} className="theme-icon" />
                  </div>
-                 <div className="text-left">
-                   <h2 className="text-lg font-medium">{translations.landing.categories.flow.title}</h2>
-                   <div className="text-xs text-gray-400">{translations.landing.categories.flow.desc[lang]}</div>
+                 <div className="flex flex-col justify-center -mt-0.5 gap-[10pt]">
+                   <h2 className="text-lg font-medium leading-none">{translations.landing.categories.flow.title}</h2>
+                   <div className="text-xs text-gray-400 leading-none">{translations.landing.categories.flow.desc[lang]}</div>
                  </div>
                </div>
             </div>
@@ -347,17 +347,17 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
           <motion.div initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="w-full bg-[#1e1e1e] rounded-2xl p-6 text-left relative border border-transparent"
+            className="w-[calc(100%-7pt)] mx-auto bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a]"
             
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-start items-center mb-4">
                <div className="flex items-center gap-4 text-gray-100 transition-colors">
                  <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center shrink-0 border border-[#2a2a2a]">
                    <Settings size={24} className="theme-icon" />
                  </div>
-                 <div className="text-left">
-                   <h2 className="text-lg font-medium">{translations.landing.categories.build.title}</h2>
-                   <div className="text-xs text-gray-400">{translations.landing.categories.build.desc[lang]}</div>
+                 <div className="flex flex-col justify-center -mt-0.5 gap-[10pt]">
+                   <h2 className="text-lg font-medium leading-none">{translations.landing.categories.build.title}</h2>
+                   <div className="text-xs text-gray-400 leading-none">{translations.landing.categories.build.desc[lang]}</div>
                  </div>
                </div>
             </div>
@@ -428,17 +428,17 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
           <motion.div initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="w-full bg-[#1e1e1e] rounded-2xl p-6 text-left relative border border-transparent"
+            className="w-[calc(100%-7pt)] mx-auto bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a]"
             
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-start items-center mb-4">
                <div className="flex items-center gap-4 text-gray-100 transition-colors">
                  <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center shrink-0 border border-[#2a2a2a]">
                    <TrendingUp size={24} className="theme-icon" />
                  </div>
-                 <div className="text-left">
-                   <h2 className="text-lg font-medium">{translations.landing.categories.grow.title}</h2>
-                   <div className="text-xs text-gray-400">{translations.landing.categories.grow.desc[lang]}</div>
+                 <div className="flex flex-col justify-center -mt-0.5 gap-[10pt]">
+                   <h2 className="text-lg font-medium leading-none">{translations.landing.categories.grow.title}</h2>
+                   <div className="text-xs text-gray-400 leading-none">{translations.landing.categories.grow.desc[lang]}</div>
                  </div>
                </div>
             </div>
@@ -509,17 +509,17 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
           <motion.div initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="w-full bg-[#1e1e1e] rounded-2xl p-6 text-left relative border border-transparent mb-8"
+            className="w-[calc(100%-7pt)] mx-auto bg-[#1e1e1e] rounded-2xl p-6 text-left relative overflow-hidden group hover:bg-[#2a2a2a] transition-colors border border-transparent hover:border-[#2a2a2a] mb-8"
             
           >
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex justify-start items-center mb-4">
                <div className="flex items-center gap-4 text-gray-100 transition-colors">
                  <div className="w-12 h-12 bg-[#121212] rounded-full flex items-center justify-center shrink-0 border border-[#2a2a2a]">
                    <BookOpen size={24} className="theme-icon" />
                  </div>
-                 <div className="text-left">
-                   <h2 className="text-lg font-medium">{translations.landing.categories.legacy.title}</h2>
-                   <div className="text-xs text-gray-400">{translations.landing.categories.legacy.desc[lang]}</div>
+                 <div className="flex flex-col justify-center -mt-0.5 gap-[10pt]">
+                   <h2 className="text-lg font-medium leading-none">{translations.landing.categories.legacy.title}</h2>
+                   <div className="text-xs text-gray-400 leading-none">{translations.landing.categories.legacy.desc[lang]}</div>
                  </div>
                </div>
             </div>
@@ -591,7 +591,7 @@ export function LandingView({ onNavigate, onUnavailable }: { onNavigate: (screen
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="flex justify-between items-center mt-6 space-x-4"
+          className="flex justify-between items-center mt-6 space-x-4 w-[calc(100%-7pt)] mx-auto"
         >
           <button 
              className="flex-1 py-3 rounded-2xl bg-[#1e1e1e]/90 backdrop-blur border border-[#2a2a2a] flex items-center justify-center text-gray-400 hover:text-gray-100 hover:bg-[#2a2a2a] transition-colors"

@@ -90,7 +90,7 @@ export function TransactionsView({ onNewTransaction, onUnavailable }: { onNewTra
                    className="bg-[#1e1e1e] border-y border-[#2a2a2a] p-4 rounded-2xl flex justify-between items-center relative z-10 hover:bg-[#2a2a2a] transition-colors"
                  >
                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{ backgroundColor: tx.color + '20', color: tx.color }}>
+                      <div className="preserve-color w-10 h-10 rounded-full flex items-center justify-center text-lg" style={{ backgroundColor: tx.color + '20', color: tx.color }}>
                         {tx.icon}
                       </div>
                       <div>

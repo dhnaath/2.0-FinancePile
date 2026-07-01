@@ -27,7 +27,7 @@ export function Dashboard({ utangList }: { utangList: Utang[] }) {
           <CalendarClock size={24} />
         </div>
         <div>
-          <p className="text-sm font-medium text-slate-500 mb-1">Total Cicilan per Bulan</p>
+          <p className="text-sm font-medium text-slate-500 mb-1">Total Cicilan Per Tenor</p>
           <p className="text-2xl md:text-2xl font-bold text-slate-900">{formatRupiah(totalCicilanBulanIni)}</p>
         </div>
       </div>

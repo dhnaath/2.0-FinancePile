@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Calendar, Plus, Trash2, FileText, Palette, CalendarClock, Receipt, CreditCard, Clock, Landmark, Home, Car, User, Smartphone, Building, Banknote, TrendingUp, Wallet, Users, MoreHorizontal, Briefcase, Coins } from 'lucide-react';
+import { ChevronLeft, Calendar, Plus, Trash2, FileText, Palette, CalendarClock, Receipt, CreditCard, Clock, Landmark, Home, Car, User, Smartphone, Building, Banknote, TrendingUp, Wallet, Users, MoreHorizontal, Briefcase, Coins, Pipette } from 'lucide-react';
 import { useDebts, Fee } from '../hooks/useDebts';
 
 
@@ -212,118 +212,127 @@ export function AddCardView({ onBack, editDebtId }: { onBack: () => void, editDe
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-3 pb-2 focus-within:border-gray-500 bg-[#1e1e1e]">
-           <legend className="text-xs font-medium text-gray-400 px-1 ml-1 absolute -top-2.5 bg-[#121212]">Nama Pinjaman</legend>
-           <input required name="name" value={formData.name} onChange={handleChange} type="text" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-600 text-base" placeholder="KPR Mandiri" />
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+           <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Nama Pinjaman</legend>
+           <input required name="name" value={formData.name} onChange={handleChange} type="text" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-600 text-base" placeholder="KPR Mandiri" />
         </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-4 bg-[#1e1e1e] flex flex-col justify-center gap-3">
-            <label className="text-xs font-medium text-gray-400">Jenis Kredit</label>
-            <div className="grid grid-cols-3 gap-2">
-              {debtTypes.map(type => (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => setFormData(f => ({ ...f, type }))}
-                  className={`flex items-start gap-2 p-3 rounded-xl border transition-colors text-left ${formData.type === type ? 'bg-[#2b4c7e] border-[#4a72ff] text-white' : 'bg-[#222] border-[#333] text-gray-400 hover:bg-[#2a2a2a]'}`}
-                >
-                  {getTypeIcon(type)}
-                  <span className="text-sm font-medium leading-tight">{type}</span>
-                </button>
-              ))}
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Jenis Kredit</legend>
+            <div className="flex items-center gap-3 px-1 pb-1">
+              <div className="text-gray-400">
+                {getTypeIcon(formData.type)}
+              </div>
+              <select name="type" value={formData.type} onChange={handleChange} className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 text-base appearance-none cursor-pointer">
+                {debtTypes.map(type => (
+                  <option key={type} value={type} className="bg-[#1e1e1e] text-gray-100">{type}</option>
+                ))}
+              </select>
             </div>
-        </div>
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-           <label className="text-xs font-medium text-gray-400">Tanggal Mulai</label>
-           <input name="startDate" value={formData.startDate} onChange={handleChange} type="date" className="w-full bg-transparent outline-none font-medium text-gray-100 text-base" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+           <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Tanggal Mulai</legend>
+           <input name="startDate" value={formData.startDate} onChange={handleChange} type="date" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 text-base" />
+        </fieldset>
 
         <div className="grid grid-cols-2 gap-4">
-           <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-               <label className="text-xs font-medium text-gray-400">Tenor (Bulan)</label>
-               <input name="tenor" value={formData.tenor} onChange={handleChange} type="number" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="12" />
-           </div>
-           <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-               <label className="text-xs font-medium text-gray-400">Bunga (%)</label>
-               <input name="interestRate" value={formData.interestRate} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="1.5" />
-           </div>
+           <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+               <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Jumlah Tenor</legend>
+               <input name="tenor" value={formData.tenor} onChange={handleChange} type="number" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="12" />
+           </fieldset>
+           <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+               <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Bunga (%)</legend>
+               <input name="interestRate" value={formData.interestRate} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="1.5" />
+           </fieldset>
         </div>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Pokok Pinjaman (Rp)</label>
-            <input name="principalAmount" value={formData.principalAmount} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Pokok Pinjaman (Rp)</legend>
+            <input name="principalAmount" value={formData.principalAmount} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Cicilan per Bulan (Rp)</label>
-            <input name="monthlyInstallment" value={formData.monthlyInstallment} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Cicilan Per Tenor (Rp)</legend>
+            <input name="monthlyInstallment" value={formData.monthlyInstallment} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Sisa Pokok (Rp)</label>
-            <input required name="amount" value={formData.amount} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Sisa Pokok (Rp)</legend>
+            <input required name="amount" value={formData.amount} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Total Dibayar (Rp)</label>
-            <input name="totalPaid" value={formData.totalPaid} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Total Dibayar (Rp)</legend>
+            <input name="totalPaid" value={formData.totalPaid} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Status</label>
-            <select name="status" value={formData.status} onChange={handleChange} className="w-full bg-transparent outline-none font-medium text-gray-100 text-base appearance-none cursor-pointer">
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Status</legend>
+            <select name="status" value={formData.status} onChange={handleChange} className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 text-base appearance-none cursor-pointer">
               <option value="aktif" className="bg-[#1e1e1e]">Aktif</option>
               <option value="lunas" className="bg-[#1e1e1e]">Lunas</option>
               <option value="menunggak" className="bg-[#1e1e1e]">Menunggak</option>
             </select>
-        </div>
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center">
-            <label className="text-xs font-medium text-gray-400 mb-1">Plafon kredit - Opsional</label>
-            <input name="limit" value={formData.limit} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
-        </div>
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Plafon Kredit - Opsional</legend>
+            <input name="limit" value={formData.limit} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="0" />
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Denda berjalan - Opsional</label>
-            <div className="flex items-center gap-3">
-              <input name="penalty" value={formData.penalty} onChange={handleChange} type="number" step="0.01" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="Nominal Denda (Rp)" />
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Denda Berjalan - Opsional</legend>
+            <div className="flex items-center gap-3 px-1 pb-1">
+              <input name="penalty" value={formData.penalty} onChange={handleChange} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="Nominal Denda (Rp)" />
               <select name="penaltyFrequency" value={formData.penaltyFrequency} onChange={handleChange} className="bg-[#222] border border-[#333] text-gray-100 text-sm px-3 py-2 rounded-xl outline-none appearance-none cursor-pointer">
                 <option value="harian" className="bg-[#1e1e1e]">Harian</option>
                 <option value="bulanan" className="bg-[#1e1e1e]">Bulanan</option>
               </select>
             </div>
-        </div>
+        </fieldset>
 
-        <div className="relative border border-[#2a2a2a] rounded-2xl px-4 py-3 bg-[#1e1e1e] flex flex-col justify-center gap-2">
-            <label className="text-xs font-medium text-gray-400">Catatan</label>
-            <div className="flex items-center gap-3">
+        <fieldset className="relative border border-[#2a2a2a] rounded-2xl px-4 pt-1.5 pb-2 bg-[#1e1e1e] focus-within:border-gray-500">
+            <legend className="text-xs font-medium text-gray-400 px-1 ml-1 bg-[#121212] -mt-0.5">Catatan</legend>
+            <div className="flex items-center gap-3 px-1 pb-1">
               <FileText className="text-gray-400 shrink-0" size={20} />
-              <input name="description" value={formData.description} onChange={handleChange} type="text" className="w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="Informasi tambahan" />
+              <input name="description" value={formData.description} onChange={handleChange} type="text" className="px-1 pb-1 w-full bg-transparent outline-none font-medium text-gray-100 placeholder:text-gray-500 text-base" placeholder="Informasi tambahan" />
             </div>
-        </div>
+        </fieldset>
 
         <div className="flex flex-col py-4 px-4 border border-[#2a2a2a] rounded-2xl bg-[#1e1e1e] gap-3">
           <div className="flex items-center gap-2">
             <Palette className="text-gray-400" size={18} />
             <span className="font-medium text-gray-300 text-sm">Warna</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center gap-3 flex-wrap">
              {colors.map(color => (
                 <button 
                   type="button" 
                   key={color} 
                   onClick={() => setFormData({...formData, color})}
-                  className={`w-8 h-8 rounded-full border-2 ${formData.color === color ? 'border-white' : 'border-transparent'}`}
-                  style={{ backgroundColor: color }}
-                />
+                  className={`relative w-8 h-8 rounded-full shrink-0 flex items-center justify-center border-2 ${formData.color === color ? 'border-gray-100' : 'border-transparent'}`}
+                >
+                  <div className="preserve-color w-full h-full rounded-full" style={{ backgroundColor: color }} />
+                </button>
              ))}
+             <div className={`relative w-8 h-8 rounded-full shrink-0 border-2 flex items-center justify-center transition-colors ${!colors.includes(formData.color) ? 'border-gray-100' : 'border-transparent'}`}>
+                <div className={`absolute inset-0 w-full h-full rounded-full flex items-center justify-center ${!colors.includes(formData.color) ? 'preserve-color text-white' : 'bg-[#1e1e1e] border border-[#2a2a2a] text-gray-400 hover:text-gray-100 hover:border-[#3a3a3a]'}`} style={!colors.includes(formData.color) ? { backgroundColor: formData.color } : {}}>
+                  <Pipette size={14} />
+                </div>
+                <input
+                  type="color"
+                  value={!colors.includes(formData.color) ? formData.color : '#ffffff'}
+                  onChange={(e) => setFormData({...formData, color: e.target.value})}
+                  className="absolute -top-2 -left-2 w-12 h-12 cursor-pointer opacity-0"
+                />
+             </div>
           </div>
         </div>
 
         <div className="border border-[#2a2a2a] rounded-2xl bg-[#1e1e1e] overflow-hidden">
           <div onClick={() => setDueDateEnabled(!dueDateEnabled)} className="flex justify-between items-center py-4 px-4 cursor-pointer hover:bg-[#2a2a2a] transition-colors border-b border-[#2a2a2a]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 px-1 pb-1">
               <Calendar className="text-gray-400" size={20} />
               <span className="font-medium text-gray-300 text-base">Jadwal Tagihan</span>
             </div>
@@ -338,14 +347,14 @@ export function AddCardView({ onBack, editDebtId }: { onBack: () => void, editDe
                     <p className="text-xs font-medium text-gray-400 mb-2">Tanggal Cetak Tagihan</p>
                     <div className="flex items-center gap-2 border border-[#333] bg-[#222] px-3 py-2 rounded-xl">
                        <Calendar className="text-gray-400" size={18} />
-                       <input name="statementDate" value={formData.statementDate} onChange={handleChange} type="number" min="1" max="31" className="w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Tgl (1-31)" />
+                       <input name="statementDate" value={formData.statementDate} onChange={handleChange} type="number" min="1" max="31" className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Tgl (1-31)" />
                     </div>
                  </div>
                  <div>
                     <p className="text-xs font-medium text-gray-400 mb-2">Jatuh Tempo</p>
                     <div className="flex items-center gap-2 border border-[#333] bg-[#222] px-3 py-2 rounded-xl">
                        <Calendar className="text-gray-400" size={18} />
-                       <input name="dueDate" value={formData.dueDate} onChange={handleChange} type="number" min="1" max="31" className="w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Tgl (1-31)" />
+                       <input name="dueDate" value={formData.dueDate} onChange={handleChange} type="number" min="1" max="31" className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Tgl (1-31)" />
                     </div>
                  </div>
               </div>
@@ -356,9 +365,9 @@ export function AddCardView({ onBack, editDebtId }: { onBack: () => void, editDe
           )}
 
           <div onClick={() => setInstallmentsEnabled(!installmentsEnabled)} className="flex justify-between items-center py-4 px-4 cursor-pointer hover:bg-[#2a2a2a] transition-colors border-b border-[#2a2a2a]">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 px-1 pb-1">
               <CalendarClock className="text-gray-400" size={20} />
-              <span className="font-medium text-gray-300 text-base">Jumlah Cicilan</span>
+              <span className="font-medium text-gray-300 text-base">Jumlah Tenor</span>
             </div>
             <div className={`w-11 h-6 rounded-full flex items-center p-1 transition-colors ${installmentsEnabled ? 'bg-[#1976d2] justify-end' : 'bg-[#333] justify-start'}`}>
                <div className="w-4 h-4 bg-white rounded-full shadow-sm"></div>
@@ -368,13 +377,13 @@ export function AddCardView({ onBack, editDebtId }: { onBack: () => void, editDe
             <div className="p-4 bg-[#1a1a1a] border-b border-[#2a2a2a]">
                 <p className="text-xs font-medium text-gray-400 mb-2">Sisa Tenor</p>
                 <div className="flex items-center border border-[#333] bg-[#222] px-3 py-2 rounded-xl">
-                   <input name="remainingInstallments" value={formData.remainingInstallments} onChange={handleChange} type="number" min="1" className="w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Opsional (12)" />
+                   <input name="remainingInstallments" value={formData.remainingInstallments} onChange={handleChange} type="number" min="1" className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm" placeholder="Opsional (12)" />
                 </div>
             </div>
           )}
 
           <div onClick={() => setFeesEnabled(!feesEnabled)} className="flex justify-between items-center py-4 px-4 cursor-pointer hover:bg-[#2a2a2a] transition-colors">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 px-1 pb-1">
               <Receipt className="text-gray-400" size={20} />
               <span className="font-medium text-gray-300 text-base">Biaya Tambahan</span>
             </div>
@@ -396,17 +405,17 @@ export function AddCardView({ onBack, editDebtId }: { onBack: () => void, editDe
                 </div>
                 <div className="space-y-3">
                   <div className="relative border border-[#2a2a2a] rounded-xl px-3 py-2 bg-[#121212] flex flex-col">
-                     <label className="text-xs font-medium text-gray-500">Nama biaya</label>
-                     <input value={fee.name} onChange={(e) => handleUpdateFee(fee.id, 'name', e.target.value)} type="text" className="w-full bg-transparent outline-none text-gray-100 text-sm mt-1" placeholder="Biaya Admin" />
+                     <label className="text-xs font-medium text-gray-500">Nama Biaya</label>
+                     <input value={fee.name} onChange={(e) => handleUpdateFee(fee.id, 'name', e.target.value)} type="text" className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm mt-1" placeholder="Biaya Admin" />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="relative border border-[#2a2a2a] rounded-xl px-3 py-2 bg-[#121212] flex flex-col">
                        <label className="text-xs font-medium text-gray-500">Jumlah (Rp)</label>
-                       <input value={fee.amount || ''} onChange={(e) => handleUpdateFee(fee.id, 'amount', parseFloat(e.target.value) || 0)} type="number" step="0.01" className="w-full bg-transparent outline-none text-gray-100 text-sm mt-1" placeholder="0" />
+                       <input value={fee.amount || ''} onChange={(e) => handleUpdateFee(fee.id, 'amount', parseFloat(e.target.value) || 0)} type="number" step="0.01" className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm mt-1" placeholder="0" />
                     </div>
                     <div className="relative border border-[#2a2a2a] rounded-xl px-3 py-2 bg-[#121212] flex flex-col">
                        <label className="text-xs font-medium text-gray-500">Frekuensi</label>
-                       <select value={fee.frequency} onChange={(e) => handleUpdateFee(fee.id, 'frequency', e.target.value)} className="w-full bg-transparent outline-none text-gray-100 text-sm mt-1 appearance-none cursor-pointer">
+                       <select value={fee.frequency} onChange={(e) => handleUpdateFee(fee.id, 'frequency', e.target.value)} className="px-1 pb-1 w-full bg-transparent outline-none text-gray-100 text-sm mt-1 appearance-none cursor-pointer">
                          <option value="sekali" className="bg-[#121212] text-gray-100">Sekali (Di Awal)</option>
                          <option value="bulanan" className="bg-[#121212] text-gray-100">Bulanan</option>
                          <option value="tahunan" className="bg-[#121212] text-gray-100">Tahunan</option>

@@ -51,7 +51,7 @@ export function DebtCard({ utang, onEdit, onDelete }: { key?: string | number, u
            <p className="text-sm font-bold text-slate-900">{formatRupiah(totalTermasukBunga)}</p>
          </div>
          <div>
-           <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Jumlah Cicilan</p>
+           <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Jumlah Tenor</p>
            <p className="text-sm font-bold text-slate-900">{formatRupiah(cicilanPerBulan)} <span className="text-xs font-normal text-slate-500">/bln</span></p>
          </div>
          <div>

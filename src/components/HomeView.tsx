@@ -132,7 +132,7 @@ export function HomeView({ onNavigate, onBack, onEditDebt, fixedTab, customTitle
                       </button>
                     </div>
                   )}
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${debt.color || '#333'}20` }}>
+                  <div className="preserve-color w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${debt.color || '#333'}20` }}>
                     {getIconForType(debt.type)}
                   </div>
                   <div className="flex-1 cursor-pointer" onClick={() => onEditDebt(debt.id)}>
@@ -141,7 +141,7 @@ export function HomeView({ onNavigate, onBack, onEditDebt, fixedTab, customTitle
                      {debt.limit > 0 && activeTab === 'kredit' && (
                        <div className="w-full bg-gray-800 rounded-full h-1.5 mt-1 overflow-hidden">
                          <div 
-                           className="h-1.5 rounded-full" 
+                           className="preserve-color h-1.5 rounded-full" 
                            style={{ 
                              width: `${Math.min((debt.amount / debt.limit) * 100, 100)}%`, 
                              backgroundColor: debt.amount / debt.limit > 0.8 ? '#f44336' : (debt.color || '#e91e63')
@@ -155,7 +155,7 @@ export function HomeView({ onNavigate, onBack, onEditDebt, fixedTab, customTitle
                      {debt.limit && activeTab === 'kredit' ? <p className="text-xs text-gray-500">Plafon: {formatIDR(debt.limit)}</p> : null}
                      {!debt.limit && activeTab === 'kredit' ? <p className="text-xs text-gray-500">Sisa Pokok</p> : null}
                      {activeTab === 'debit' ? <p className="text-xs text-gray-500">Saldo Identifikasi</p> : null}
-                     {debt.remainingInstallments ? <p className="text-xs text-orange-400 mt-1">Sisa {debt.remainingInstallments}x Cicilan</p> : null}
+                     {debt.remainingInstallments ? <p className="text-xs text-orange-400 mt-1">Sisa {debt.remainingInstallments}x Tenor</p> : null}
                   </div>
                 </motion.div>
               </div>

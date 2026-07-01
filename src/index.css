@@ -24,7 +24,8 @@ html.light-mode {
 }
 
 html.light-mode img,
-html.light-mode svg:not(.theme-icon):not(.lucide) {
+html.light-mode svg:not(.theme-icon):not(.lucide),
+html.light-mode .preserve-color {
   filter: invert(1) hue-rotate(180deg);
 }
 
